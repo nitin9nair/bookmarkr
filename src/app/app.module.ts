@@ -8,6 +8,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { HeaderComponent } from './core/header/header.component';
 import { HomeComponent } from './core/home/home.component';
 import { FooterComponent } from './core/footer/footer.component';
+import { BookmarksComponent } from './bookmarks/bookmarks.component';
 import { BookmarkListComponent } from './bookmarks/bookmark-list/bookmark-list.component';
 import { BookmarkAddComponent } from './bookmarks/bookmark-add/bookmark-add.component';
 import { BookmarkEditComponent } from './bookmarks/bookmark-edit/bookmark-edit.component';
@@ -23,6 +24,7 @@ import { AuthService } from './auth/auth.service';
     HeaderComponent,
     HomeComponent,
     FooterComponent,
+    BookmarksComponent,
     BookmarkListComponent,
     BookmarkAddComponent,
     BookmarkEditComponent
