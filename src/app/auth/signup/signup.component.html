@@ -1,3 +1,11 @@
-<p>
-  signup works!
-</p>
+<h3>Sign Up Form</h3>
+<hr>
+<form (ngSubmit)="onSignup(f)" #f="ngForm">
+  <label>Email</label>
+  <input type="email" id="email" name="email" ngModel>
+
+  <label>Password</label>
+  <input type="password" id="password" name="password" ngModel>
+
+  <button type="submit">Sign Up</button>
+</form>

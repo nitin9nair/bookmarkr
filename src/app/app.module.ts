@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { SigninComponent } from './auth/signin/signin.component';
@@ -10,6 +11,9 @@ import { FooterComponent } from './core/footer/footer.component';
 import { BookmarkListComponent } from './bookmarks/bookmark-list/bookmark-list.component';
 import { BookmarkAddComponent } from './bookmarks/bookmark-add/bookmark-add.component';
 import { BookmarkEditComponent } from './bookmarks/bookmark-edit/bookmark-edit.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AuthService } from './auth/auth.service';
+
 
 @NgModule({
   declarations: [
@@ -24,9 +28,11 @@ import { BookmarkEditComponent } from './bookmarks/bookmark-edit/bookmark-edit.c
     BookmarkEditComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
