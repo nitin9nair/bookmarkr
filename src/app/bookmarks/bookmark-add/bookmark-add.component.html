@@ -1,18 +1,24 @@
 <div class="container bookmark-add">
-    <form (ngSubmit)="onSignup(f)" #f="ngForm">
+    <form (ngSubmit)="onAddBookmark(f)" #f="ngForm">
         <h6>Create Bookmarks</h6>
         <hr>
         <div class="form-group">
             <label>Bookmark Description</label>
-            <input class="form-control" type="email" id="email" name="email" ngModel>
+            <input class="form-control" type="text" id="bookmarkDesc" name="bookmarkDesc" ngModel>
         </div>
         <div class="form-group">
             <label>Bookmark Link</label>
-            <input class="form-control" type="password" id="password" name="password" ngModel>
+            <input class="form-control" type="text" id="bookmarkLink" name="bookmarkLink" ngModel>
             <hr>
         </div>
         <div class="form-group">
             <button class="btn btn-primary" type="submit">Add bookmark</button>
         </div>
     </form>
+
+    <div class="alert alert-success alert-dismissible">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        Bookmark added successfully.
+    </div>
+
 </div>

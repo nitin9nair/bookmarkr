@@ -1,10 +1,10 @@
 export class BookmarkModel {
 
-    public bookmark_name: string;
+    public bookmark_description: string;
     public bookmark_url: string;
 
-    constructor(bookmark_name: string, bookmark_url: string) {
-        this.bookmark_name = bookmark_name;
+    constructor(bookmark_description: string, bookmark_url: string) {
+        this.bookmark_description = bookmark_description;
         this.bookmark_url = bookmark_url;
     }
 }

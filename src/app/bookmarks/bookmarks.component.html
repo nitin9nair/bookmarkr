@@ -3,10 +3,10 @@
     <hr>
     <div class="row">
         <div class="col-xs-12 col-sm-10 col-md-4">
-            <app-bookmark-add></app-bookmark-add>
+            <app-bookmark-add (bookmarkAdded)="bookmarkListRef.onBookmarkAdded($event)"></app-bookmark-add>
         </div>
         <div class="col-xs-12 col-sm-10 col-md-8">
-            <app-bookmark-list></app-bookmark-list>
+            <app-bookmark-list #bookmarkListRef></app-bookmark-list>
         </div>
     </div>
 </div>

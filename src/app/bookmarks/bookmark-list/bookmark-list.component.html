@@ -2,19 +2,16 @@
   <h6>Bookmarks List</h6>
   <hr>
   <ul class="list-group">
-    <li class="list-group-item">
+    <li class="list-group-item" *ngFor="let bookmark of bookmarks">
       <div class="float-left">
-        <div class="bookmark-desc">Google</div>
-        <div class="bookmark-link">https://www.google.com</div>
+        <div class="bookmark-desc">{{ bookmark.bookmark_description }}</div>
+        <div class="bookmark-link">{{ bookmark.bookmark_url }}</div>
       </div>
       <div class="float-right">
-        <button type="button" class="btn btn-success mr-2">Visit</button>
-        <button type="button" class="btn btn-primary mr-2">Edit</button>
+        <a [href]="bookmark.bookmark_url" target="_blank" role="button" class="btn btn-success mr-2">Visit</a>
+        <button type="button" class="btn btn-primary mr-2" data-toggle="modal" data-target="#editBookmark">Edit</button>
         <button type="button" class="btn btn-danger">Delete</button>
       </div>
-    </li>
-    <li class="list-group-item">
-
     </li>
   </ul>
 </div>
