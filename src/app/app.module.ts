@@ -14,6 +14,7 @@ import { BookmarkAddComponent } from './bookmarks/bookmark-add/bookmark-add.comp
 import { BookmarkEditComponent } from './bookmarks/bookmark-edit/bookmark-edit.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './auth/auth.service';
+import { DataService } from './shared/data.service';
 
 
 @NgModule({
@@ -34,7 +35,7 @@ import { AuthService } from './auth/auth.service';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

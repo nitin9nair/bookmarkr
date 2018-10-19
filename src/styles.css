@@ -5,3 +5,12 @@ body {
 .btn:focus, a:focus {
     outline: none;
 }
+.btn:disabled {
+    cursor: not-allowed;
+}
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+form .error-message {
+    color: red;
+}
