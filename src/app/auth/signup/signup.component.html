@@ -2,7 +2,7 @@
   <div class="col-xs-12 col-sm-10 col-md-6">
     <form (ngSubmit)="f.valid && onSignup(f)" #f="ngForm">
       <div class="form-group">
-        <h4>Sign Up</h4>
+        <h4>Sign Up / Register</h4>
         <hr>
         <label>Email</label>
         <input class="form-control" type="email" id="email" name="email" email #email="ngModel" required ngModel>
@@ -15,18 +15,17 @@
         <hr>
       </div>
       <div class="form-group">
-        <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Sign Up</button>
+        <button class="btn btn-primary mr-2" type="submit" [disabled]="!f.valid">Sign Up</button>
       </div>
     </form>
 
-    <div class="alert alert-success alert-dismissible" *ngIf="f.submitted">
-      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-      You're successfully signed up now.
+    <div class="alert alert-danger" *ngIf="authService.isDuplicateUser">
+      Sorry, email address already exist! Please
+      <a *ngIf="authService.isDuplicateUser" routerLink="/signin">Sign In</a>.
     </div>
 
-    <div class="alert alert-danger alert-dismissible" *ngIf="f.submitted">
-      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-      Sorry, email address already exist! Please sign in.
+    <div class="alert alert-success" *ngIf="authService.isSignupSuccessful && !authService.isDuplicateUser">
+      You're successfully signed up now. Please  <a routerLink="/signin">Sign In</a> to continue.
     </div>
   </div>
 </div>

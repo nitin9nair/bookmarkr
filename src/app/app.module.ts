@@ -18,6 +18,7 @@ import { AuthService } from './auth/auth.service';
 import { DataService } from './shared/data.service';
 import { ShortenPipe } from './shared/shorten.pipe';
 import { AuthGuard } from './auth/auth-guard.service';
+import { BookmarkService } from './bookmarks/bookmark.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { AuthGuard } from './auth/auth-guard.service';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [AuthService, DataService, AuthGuard],
+  providers: [AuthService, DataService, BookmarkService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,35 +1,42 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Response } from '@angular/http';
+import { Subscription } from 'rxjs/Subscription';
 
 import { BookmarkModel } from '../bookmark.model';
-import { DataService } from '../../shared/data.service';
+import { BookmarkService } from '../bookmark.service';
 
 @Component({
   selector: 'app-bookmark-list',
   templateUrl: './bookmark-list.component.html',
   styleUrls: ['./bookmark-list.component.css']
 })
-export class BookmarkListComponent implements OnInit {
+export class BookmarkListComponent implements OnInit, OnDestroy {
 
   bookmarks: BookmarkModel[];
+  subscription: Subscription;
 
-  constructor(private dataService: DataService) { }
+  constructor(private bookmarkService: BookmarkService) { }
 
   ngOnInit() {
-    this.dataService.getBookmarks().subscribe(
-      (data: any) => {
-        this.bookmarks = data;
-        console.log(data);
+    this.subscription = this.bookmarkService.bookmarksChanged
+    .subscribe(
+      (bookmarks: BookmarkModel[]) => {
+        this.bookmarks = bookmarks;
       }
-  ); 
+    );
+  this.bookmarks = this.bookmarkService.getBookmarks();
   }
 
-  onBookmarkAdded(bookmark: BookmarkModel) {
-    this.dataService.addBookmark(bookmark);
+  onEditBookmark(index: number) {
+    
   }
 
   onDeleteBookmark(index: number) {
-    this.dataService.deleteBookmark(index);
+    this.bookmarkService.deleteBookmark(index);
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }
