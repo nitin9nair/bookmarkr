@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Response } from '@angular/http';
 
 import { BookmarkModel } from '../bookmark.model';
 import { DataService } from '../../shared/data.service';
@@ -15,11 +16,20 @@ export class BookmarkListComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.bookmarks = this.dataService.getBookmarks();
+    this.dataService.getBookmarks().subscribe(
+      (data: any) => {
+        this.bookmarks = data;
+        console.log(data);
+      }
+  ); 
   }
 
   onBookmarkAdded(bookmark: BookmarkModel) {
-    this.bookmarks.push(bookmark);
+    this.dataService.addBookmark(bookmark);
+  }
+
+  onDeleteBookmark(index: number) {
+    this.dataService.deleteBookmark(index);
   }
 
 }

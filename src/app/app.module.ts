@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -15,7 +16,8 @@ import { BookmarkEditComponent } from './bookmarks/bookmark-edit/bookmark-edit.c
 import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './auth/auth.service';
 import { DataService } from './shared/data.service';
-
+import { ShortenPipe } from './shared/shorten.pipe';
+import { AuthGuard } from './auth/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -28,14 +30,16 @@ import { DataService } from './shared/data.service';
     BookmarksComponent,
     BookmarkListComponent,
     BookmarkAddComponent,
-    BookmarkEditComponent
+    BookmarkEditComponent,
+    ShortenPipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    FormsModule
+    HttpModule,
+    FormsModule,
+    AppRoutingModule
   ],
-  providers: [AuthService, DataService],
+  providers: [AuthService, DataService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

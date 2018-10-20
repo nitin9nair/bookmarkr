@@ -5,6 +5,7 @@ import { HomeComponent } from './core/home/home.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { BookmarksComponent } from './bookmarks/bookmarks.component';
+import { AuthGuard } from './auth/auth-guard.service';
 
 
 const appRoutes: Routes = [
@@ -12,7 +13,7 @@ const appRoutes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'signup', component: SignupComponent},
     { path: 'signin', component: SigninComponent},
-    { path: 'dashboard', component: BookmarksComponent }
+    { path: 'dashboard', component: BookmarksComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

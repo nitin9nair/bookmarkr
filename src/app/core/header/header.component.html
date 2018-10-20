@@ -4,26 +4,32 @@
 
     <!-- Links -->
     <ul class="navbar-nav mr-auto">
-        <li class="nav-item" routerLinkActive="active">
+        <li class="nav-item" routerLinkActive="active" *ngIf="!authService.isAuthenticated()">
             <a class="nav-link" routerLink="/home">Home</a>
         </li>
-        <li class="nav-item" routerLinkActive="active">
+        <li class="nav-item" routerLinkActive="active" *ngIf="authService.isAuthenticated()">
             <a class="nav-link" routerLink="/dashboard">Dashboard</a>
         </li>
     </ul>
 
     <ul class="navbar-nav ml-auto">
-        <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" routerLink="/home">Logout </a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
+
+        <li class="nav-item" routerLinkActive="active" *ngIf="authService.isAuthenticated()">
             <a class="nav-link" routerLink="/settings">Settings</a>
         </li>
-        <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" routerLink="/signup">Sign Up</a>
+
+        <li class="nav-item" routerLinkActive="active" *ngIf="authService.isAuthenticated()">
+            <a class="nav-link" (click)="onLogout()">Logout </a>
         </li>
-        <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" routerLink="/signin">Sign In</a>
-        </li>
+
+        <ng-template [ngIf]="!authService.isAuthenticated()">
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" routerLink="/signup">Sign Up</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" routerLink="/signin">Sign In</a>
+            </li>
+        </ng-template>
+
     </ul>
 </nav>

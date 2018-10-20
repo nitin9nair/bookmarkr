@@ -1,17 +1,18 @@
 <div class="container">
   <h6>Bookmarks List</h6>
   <hr>
-  <ul class="list-group" *ngFor="let bookmark of bookmarks">
-      <li class="list-group-item">
-        <div class="float-left">
-          <div class="bookmark-desc">{{ bookmark.bookmark_description }}</div>
-          <div class="bookmark-link">{{ bookmark.bookmark_url }}</div>
-        </div>
-        <div class="float-right">
-          <a [href]="bookmark.bookmark_url" target="_blank" role="button" class="btn btn-success mr-2">Visit</a>
-          <button type="button" class="btn btn-primary mr-2" data-toggle="modal" data-target="#editBookmark">Edit</button>
-          <button type="button" class="btn btn-danger">Delete</button>
-        </div>
-      </li>
+
+  <ul class="list-group" *ngFor="let bookmark of bookmarks; let i = index">
+    <li class="list-group-item">
+      <div class="float-left">
+        <div class="bookmark-desc">{{ bookmark.bookmark_description | shorten }}</div>
+        <div class="bookmark-link">{{ bookmark.bookmark_url }}</div>
+      </div>
+      <div class="float-right">
+        <a [href]="bookmark.bookmark_url" target="_blank" role="button" class="btn btn-success mr-2">Visit</a>
+        <button type="button" class="btn btn-primary mr-2" data-toggle="modal" data-target="#editBookmark">Edit</button>
+        <button type="button" class="btn btn-danger" (click)="onDeleteBookmark(i)">Delete</button>
+      </div>
+    </li>
   </ul>
 </div>
