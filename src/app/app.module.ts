@@ -19,6 +19,9 @@ import { DataService } from './shared/data.service';
 import { ShortenPipe } from './shared/shorten.pipe';
 import { AuthGuard } from './auth/auth-guard.service';
 import { BookmarkService } from './bookmarks/bookmark.service';
+import { FeaturesComponent } from './core/features/features.component';
+import { AboutComponent } from './core/about/about.component';
+import { ContactComponent } from './core/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,10 @@ import { BookmarkService } from './bookmarks/bookmark.service';
     BookmarkListComponent,
     BookmarkAddComponent,
     BookmarkEditComponent,
-    ShortenPipe
+    ShortenPipe,
+    FeaturesComponent,
+    AboutComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
