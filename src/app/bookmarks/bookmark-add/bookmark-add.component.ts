@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Response } from '@angular/http';
 
 import { BookmarkModel } from '../bookmark.model';
 import { BookmarkService } from '../bookmark.service';
+import { DataService } from '../../shared/data.service';
 
 @Component({
   selector: 'app-bookmark-add',
@@ -11,7 +13,7 @@ import { BookmarkService } from '../bookmark.service';
 })
 export class BookmarkAddComponent implements OnInit {
 
-  constructor(private bookmarkService: BookmarkService) { }
+  constructor(private bookmarkService: BookmarkService, private dataService: DataService) { }
 
   ngOnInit() {
   }
@@ -22,6 +24,12 @@ export class BookmarkAddComponent implements OnInit {
     const newBookmark = new BookmarkModel(bookmarkDescription, bookmarkLink);
     form.reset();
     this.bookmarkService.addBookmark(newBookmark);
+
+    this.dataService.storeBookmarks().subscribe(
+      (response: Response) => {
+        console.log(response);
+      }
+    );
   }
 
   onClear(f: NgForm) {

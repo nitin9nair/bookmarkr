@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { BookmarkModel } from '../bookmark.model';
 import { BookmarkService } from '../bookmark.service';
+import { DataService } from '../../shared/data.service';
 
 @Component({
   selector: 'app-bookmark-list',
@@ -12,10 +13,10 @@ import { BookmarkService } from '../bookmark.service';
 })
 export class BookmarkListComponent implements OnInit, OnDestroy {
 
-  bookmarks: BookmarkModel[];
+  bookmarks: BookmarkModel[] = [];
   subscription: Subscription;
 
-  constructor(private bookmarkService: BookmarkService) { }
+  constructor(private bookmarkService: BookmarkService, private dataService: DataService) { }
 
   ngOnInit() {
     this.subscription = this.bookmarkService.bookmarksChanged
@@ -24,7 +25,8 @@ export class BookmarkListComponent implements OnInit, OnDestroy {
         this.bookmarks = bookmarks;
       }
     );
-  this.bookmarks = this.bookmarkService.getBookmarks();
+    this.dataService.storeBookmarks();
+    this.dataService.getBookmarks();
   }
 
   onEditBookmark(index: number) {

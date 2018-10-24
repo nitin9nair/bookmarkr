@@ -11,11 +11,13 @@ export class DataService {
 
   DATA_URL = "https://bookmarkr-3c56f.firebaseio.com/bookmarks.json?auth=";
 
+
   constructor(private http: Http, private authService: AuthService, private bookmarkService: BookmarkService) {}
 
   // method to store data in firebase realtime DB
   storeBookmarks() {
     const token = this.authService.getToken();
+    console.log('STORE CALLED');
     return this.http.put(this.DATA_URL + token, this.bookmarkService.getBookmarks());
   }
 
@@ -23,7 +25,7 @@ export class DataService {
   getBookmarks() {
     const token = this.authService.getToken();
 
-    return this.http
+    this.http
       .get(this.DATA_URL + token)
       .map((response: Response) => {
         const data = response.json();
@@ -33,7 +35,7 @@ export class DataService {
         (bookmarks: BookmarkModel[]) => {
           this.bookmarkService.setBookmarks(bookmarks);
         }
-      );;
+      );
 
     }
 }

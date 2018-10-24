@@ -7,11 +7,7 @@ import { BookmarkModel } from "./bookmark.model";
 export class BookmarkService {
   bookmarksChanged = new Subject<BookmarkModel[]>();
 
-  bookmarks: BookmarkModel[] = [
-    new BookmarkModel("Google", "http://www.google.com"),
-    new BookmarkModel("Facebook", "http://www.facebook.com"),
-    new BookmarkModel("Twitter", "http://www.twitter.com")
-  ];
+  bookmarks: BookmarkModel[] = [];
 
   constructor() {}
 
@@ -25,8 +21,10 @@ export class BookmarkService {
   }
 
   addBookmark(bookmark: BookmarkModel) {
+    console.log('ADD '+ this.bookmarks);
     this.bookmarks.push(bookmark);
     this.bookmarksChanged.next(this.bookmarks.slice());
+    //this.getBookmarks();
   }
 
   updateBookmark(index: number, newbookmark: BookmarkModel) {
