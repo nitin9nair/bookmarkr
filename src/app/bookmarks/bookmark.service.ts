@@ -24,7 +24,6 @@ export class BookmarkService {
     console.log('ADD '+ this.bookmarks);
     this.bookmarks.push(bookmark);
     this.bookmarksChanged.next(this.bookmarks.slice());
-    //this.getBookmarks();
   }
 
   updateBookmark(index: number, newbookmark: BookmarkModel) {

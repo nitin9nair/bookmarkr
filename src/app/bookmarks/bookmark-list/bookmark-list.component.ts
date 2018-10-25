@@ -34,7 +34,17 @@ export class BookmarkListComponent implements OnInit, OnDestroy {
   }
 
   onDeleteBookmark(index: number) {
+    if( confirm('Do you want to delete this bookmark ?') === true) {
     this.bookmarkService.deleteBookmark(index);
+    this.dataService.storeBookmarks().subscribe(
+      (response: Response) => {
+        console.log(response);
+      }
+    );
+    }
+    else {
+
+    }
   }
 
   ngOnDestroy() {

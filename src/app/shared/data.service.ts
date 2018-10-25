@@ -17,7 +17,6 @@ export class DataService {
   // method to store data in firebase realtime DB
   storeBookmarks() {
     const token = this.authService.getToken();
-    console.log('STORE CALLED');
     return this.http.put(this.DATA_URL + token, this.bookmarkService.getBookmarks());
   }
 
