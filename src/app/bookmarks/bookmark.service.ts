@@ -9,7 +9,7 @@ export class BookmarkService {
   bookmarksChanged = new Subject<BookmarkModel[]>();
 
   bookmarks: BookmarkModel[] = [];
-
+  searchString: string;
   constructor() {}
 
   // set bookmark method
@@ -39,5 +39,9 @@ export class BookmarkService {
   deleteBookmark(index: number) {
     this.bookmarks.splice(index, 1);
     this.bookmarksChanged.next(this.bookmarks.slice());
+  }
+
+  fetchSearchValue(searchValue: string) {
+    this.searchString = searchValue;
   }
 }

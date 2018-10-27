@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../../auth/auth.service';
+import { BookmarkService } from '../../bookmarks/bookmark.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,7 @@ import { AuthService } from '../../auth/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private bookmarkService: BookmarkService) { }
 
   ngOnInit() {
   }
@@ -18,6 +19,10 @@ export class HeaderComponent implements OnInit {
     if(confirm('Do you want to logout ?') === true) {
       this.authService.logout();
     }
+  }
+
+  sendSearchValue(searchInput: string) {
+    this.bookmarkService.fetchSearchValue(searchInput);
   }
 
 }

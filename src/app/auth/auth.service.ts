@@ -80,7 +80,6 @@ export class AuthService {
 
     // to check whether user is authenticated or not
     isAuthenticated() {
-        console.log(this.token);
         return this.token != null;
     }
 }

@@ -22,6 +22,7 @@ import { BookmarkService } from './bookmarks/bookmark.service';
 import { FeaturesComponent } from './core/features/features.component';
 import { AboutComponent } from './core/about/about.component';
 import { ContactComponent } from './core/contact/contact.component';
+import { SearchPipe } from './shared/search.pipe';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ContactComponent } from './core/contact/contact.component';
     ShortenPipe,
     FeaturesComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,

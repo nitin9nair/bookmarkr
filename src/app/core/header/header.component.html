@@ -28,6 +28,10 @@
 
     <ul class="navbar-nav ml-auto">
 
+        <li class="nav-item" *ngIf="authService.isAuthenticated()">
+            <input type="text" class="searchInput" (keyup)="sendSearchValue(searchInput.value)" #searchInput placeholder="Enter search keyword...">
+        </li>
+
         <li class="nav-item" routerLinkActive="active" *ngIf="authService.isAuthenticated()">
             <a class="nav-link" routerLink="/settings">Settings</a>
         </li>

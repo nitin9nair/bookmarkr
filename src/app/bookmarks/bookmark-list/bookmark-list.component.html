@@ -7,7 +7,7 @@
   </div>
 
   <!-- using ngFor to display all list of bookmarks  -->
-  <ul class="list-group" *ngFor="let bookmark of bookmarks; let i = index">
+  <ul class="list-group" *ngFor="let bookmark of bookmarks | search: this.bookmarkService.searchString ; let i = index">
     <li class="list-group-item">
       <div class="float-left">
         <div class="bookmark-desc">{{ bookmark.bookmark_description | shorten }}</div>
@@ -20,7 +20,7 @@
       </div>
     </li>
   </ul>
-</div> 
+</div>
 
 <!-- adding bookmark edit template as bookmark-list child -->
 <app-bookmark-edit></app-bookmark-edit>
