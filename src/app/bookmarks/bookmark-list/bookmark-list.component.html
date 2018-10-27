@@ -2,6 +2,10 @@
   <h6>Bookmarks List</h6>
   <hr>
 
+  <div class="alert alert-info" *ngIf="bookmarks.length == 0">
+    Create your new bookmark list here.
+  </div>
+
   <ul class="list-group" *ngFor="let bookmark of bookmarks; let i = index">
     <li class="list-group-item">
       <div class="float-left">
@@ -17,3 +21,5 @@
   </ul>
 </div> 
 
+
+<app-bookmark-edit></app-bookmark-edit>

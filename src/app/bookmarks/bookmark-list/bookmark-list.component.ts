@@ -1,10 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Response } from '@angular/http';
 import { Subscription } from 'rxjs/Subscription';
 
 import { BookmarkModel } from '../bookmark.model';
 import { BookmarkService } from '../bookmark.service';
 import { DataService } from '../../shared/data.service';
+import { BookmarkEditComponent } from '../bookmark-edit/bookmark-edit.component';
 
 @Component({
   selector: 'app-bookmark-list',
@@ -15,6 +16,8 @@ export class BookmarkListComponent implements OnInit, OnDestroy {
 
   bookmarks: BookmarkModel[] = [];
   subscription: Subscription;
+
+  @ViewChild(BookmarkEditComponent) private editBmkr: BookmarkEditComponent;
 
   constructor(private bookmarkService: BookmarkService, private dataService: DataService) { }
 
@@ -30,7 +33,7 @@ export class BookmarkListComponent implements OnInit, OnDestroy {
   }
 
   onEditBookmark(index: number) {
-    
+    this.editBmkr.onFetchBookmarkValues(index);
   }
 
   onDeleteBookmark(index: number) {

@@ -20,6 +20,7 @@
     </form>
 
     <div class="alert alert-danger" *ngIf="authService.isSigninFailed">
+        <a type="button" class="close" data-dismiss="alert" aria-label="close">&times;</a>
       Sorry, invalid email address or password. Please try again!
     </div>
   </div>

@@ -20,11 +20,13 @@
     </form>
 
     <div class="alert alert-danger" *ngIf="authService.isDuplicateUser">
+        <a type="button" class="close" data-dismiss="alert" aria-label="close">&times;</a>
       Sorry, email address already exist! Please
       <a *ngIf="authService.isDuplicateUser" routerLink="/signin">Sign In</a>.
     </div>
 
     <div class="alert alert-success" *ngIf="authService.isSignupSuccessful && !authService.isDuplicateUser">
+        <a type="button" class="close" data-dismiss="alert" aria-label="close">&times;</a>
       You're successfully signed up now. Please  <a routerLink="/signin">Sign In</a> to continue.
     </div>
   </div>
