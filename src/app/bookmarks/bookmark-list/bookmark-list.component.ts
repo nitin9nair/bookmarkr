@@ -1,35 +1,51 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { Response } from '@angular/http';
-import { Subscription } from 'rxjs/Subscription';
+import { Component, OnInit, OnDestroy, ViewChild } from "@angular/core";
+import { Response } from "@angular/http";
+import { Subscription } from "rxjs/Subscription";
 
-import { BookmarkModel } from '../bookmark.model';
-import { BookmarkService } from '../bookmark.service';
-import { DataService } from '../../shared/data.service';
-import { BookmarkEditComponent } from '../bookmark-edit/bookmark-edit.component';
+import { BookmarkModel } from "../bookmark.model";
+import { BookmarkService } from "../bookmark.service";
+import { DataService } from "../../shared/data.service";
+import { BookmarkEditComponent } from "../bookmark-edit/bookmark-edit.component";
 
 @Component({
-  selector: 'app-bookmark-list',
-  templateUrl: './bookmark-list.component.html',
-  styleUrls: ['./bookmark-list.component.css']
+  selector: "app-bookmark-list",
+  templateUrl: "./bookmark-list.component.html",
+  styleUrls: ["./bookmark-list.component.css"]
 })
 export class BookmarkListComponent implements OnInit, OnDestroy {
-
   bookmarks: BookmarkModel[] = [];
   // RxJS subscription to subscribe to change events
   subscription: Subscription;
 
+  // default start and end value for pagination
+  startValue: number = 0;
+  endValue: number = 5;
+
+  // pagination method variables
+  currentPage: number = 1;
+  totalItemToShowInPage: number = 5;
+  totalItems: number;
+  totalPages: number;
+
   // to access bookmark-edit component
-  @ViewChild(BookmarkEditComponent) private editBmkr: BookmarkEditComponent;
+  @ViewChild(BookmarkEditComponent)
+  private editBmkr: BookmarkEditComponent;
 
   // injecting bookmark and data service
-  constructor(private bookmarkService: BookmarkService, private dataService: DataService) { }
+  constructor(
+    private bookmarkService: BookmarkService,
+    private dataService: DataService
+  ) {}
 
   ngOnInit() {
     // subscribing to the changes occuring in bookmark's data
-    this.subscription = this.bookmarkService.bookmarksChanged
-    .subscribe(
+    this.subscription = this.bookmarkService.bookmarksChanged.subscribe(
       (bookmarks: BookmarkModel[]) => {
         this.bookmarks = bookmarks;
+        this.totalItems = this.bookmarks.length;
+        this.totalPages = Math.ceil(
+          this.totalItems / this.totalItemToShowInPage
+        );
       }
     );
     this.dataService.storeBookmarks();
@@ -43,19 +59,30 @@ export class BookmarkListComponent implements OnInit, OnDestroy {
 
   // delete bookmark method
   onDeleteBookmark(index: number) {
-    if( confirm('Do you want to delete this bookmark ?') === true) {
-    this.bookmarkService.deleteBookmark(index);
-    this.dataService.storeBookmarks().subscribe(
-      (response: Response) => {
+    if (confirm("Do you want to delete this bookmark ?") === true) {
+      this.bookmarkService.deleteBookmark(index);
+      this.dataService.storeBookmarks().subscribe((response: Response) => {
         console.log(response);
-      }
-    );
+      });
     }
+  }
+
+  // previous button method
+  onPrevPage() {
+    this.currentPage -= 1;
+    this.startValue -= this.totalItemToShowInPage;
+    this.endValue -= this.totalItemToShowInPage;
+  }
+
+  // next button method
+  onNextPage() {
+    this.currentPage += 1;
+    this.startValue += this.totalItemToShowInPage;
+    this.endValue += this.totalItemToShowInPage;
   }
 
   ngOnDestroy() {
     // unsubscribing the subscription on OnDestroy lifecycle hook
     this.subscription.unsubscribe();
   }
-
 }

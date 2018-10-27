@@ -1,5 +1,12 @@
 <div class="container">
-  <h6>Bookmarks List</h6>
+  <h6>Bookmarks List
+    <div class="pull-right" *ngIf="totalItems > 5 && this.bookmarkService.searchString == ''">
+        <button type="button" class="btn btn-sm btn-outline-secondary prev-btn mr-3" (click)="onPrevPage()" [disabled]="currentPage == 1">
+          < Prev</button>
+        <span class="pages">Page {{ currentPage }} of {{ totalPages }}</span>
+        <button type="button" class="btn btn-sm btn-outline-secondary next-btn ml-3" (click)="onNextPage()" [disabled]="currentPage == totalPages">Next ></button>
+    </div>
+  </h6>
   <hr>
 
   <div class="alert alert-info" *ngIf="bookmarks.length == 0">
@@ -7,7 +14,7 @@
   </div>
 
   <!-- using ngFor to display all list of bookmarks  -->
-  <ul class="list-group" *ngFor="let bookmark of bookmarks | search: this.bookmarkService.searchString ; let i = index">
+  <ul class="list-group" *ngFor="let bookmark of bookmarks | search: this.bookmarkService.searchString | slice: startValue: endValue ; let i = index">
     <li class="list-group-item">
       <div class="float-left">
         <div class="bookmark-desc">{{ bookmark.bookmark_description | shorten }}</div>

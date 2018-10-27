@@ -9,7 +9,7 @@ export class BookmarkService {
   bookmarksChanged = new Subject<BookmarkModel[]>();
 
   bookmarks: BookmarkModel[] = [];
-  searchString: string;
+  searchString: string = '';
   constructor() {}
 
   // set bookmark method
