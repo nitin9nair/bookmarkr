@@ -1,5 +1,6 @@
 <div class="row">
   <div class="col-xs-12 col-sm-10 col-md-6">
+    <!-- template driven form to signup user -->
     <form (ngSubmit)="f.valid && onSignup(f)" #f="ngForm">
       <div class="form-group">
         <h4>Sign Up / Register</h4>
@@ -19,12 +20,14 @@
       </div>
     </form>
 
+    <!-- showing error message if user already exist -->
     <div class="alert alert-danger" *ngIf="authService.isDuplicateUser">
         <a type="button" class="close" data-dismiss="alert" aria-label="close">&times;</a>
       Sorry, email address already exist! Please
       <a *ngIf="authService.isDuplicateUser" routerLink="/signin">Sign In</a>.
     </div>
 
+    <!-- showing success message when user signup is successful -->
     <div class="alert alert-success" *ngIf="authService.isSignupSuccessful && !authService.isDuplicateUser">
         <a type="button" class="close" data-dismiss="alert" aria-label="close">&times;</a>
       You're successfully signed up now. Please  <a routerLink="/signin">Sign In</a> to continue.

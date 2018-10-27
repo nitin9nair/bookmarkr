@@ -1,3 +1,5 @@
+// Data service used to interact with all the data handling done across components
+
 import { Injectable } from "@angular/core";
 import { Http, Response } from "@angular/http";
 import "rxjs/Rx";
@@ -9,6 +11,7 @@ import { BookmarkService } from "../bookmarks/bookmark.service";
 @Injectable()
 export class DataService {
 
+  // firebase DB data url 
   DATA_URL = "https://bookmarkr-3c56f.firebaseio.com/bookmarks.json?auth=";
 
 
@@ -17,6 +20,7 @@ export class DataService {
   // method to store data in firebase realtime DB
   storeBookmarks() {
     const token = this.authService.getToken();
+    // http put request to store data in DB
     return this.http.put(this.DATA_URL + token, this.bookmarkService.getBookmarks());
   }
 

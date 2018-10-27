@@ -1,8 +1,13 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
     <!-- Brand/logo -->
-    <a class="navbar-brand" routerLink="/home">bookmarkr</a>
 
-    <!-- Links -->
+    <a class="navbar-brand" routerLink="/home">
+        <!-- added logo image -->
+        <img src="../../../assets/images/bookmakr_logo.png" width="30px" height="30px" style="margin-top: -10px;" class="mr-2">
+        bookmarkr
+    </a>
+
+    <!-- Nav Links -->
     <ul class="navbar-nav mr-auto">
         <li class="nav-item" routerLinkActive="active" *ngIf="!authService.isAuthenticated()">
             <a class="nav-link" routerLink="/home">Home</a>

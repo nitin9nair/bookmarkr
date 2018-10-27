@@ -13,11 +13,13 @@ import { DataService } from '../../shared/data.service';
 })
 export class BookmarkAddComponent implements OnInit {
 
+  // injecting bookmark-service and data-service
   constructor(private bookmarkService: BookmarkService, private dataService: DataService) { }
 
   ngOnInit() {
   }
 
+  // method to add bookmark
   onAddBookmark(form: NgForm) {
     const bookmarkDescription = form.value.bookmarkDesc;
     const bookmarkLink = form.value.bookmarkLink;
@@ -32,6 +34,7 @@ export class BookmarkAddComponent implements OnInit {
     );
   }
 
+  // clear form method
   onClear(f: NgForm) {
     f.reset();
   }

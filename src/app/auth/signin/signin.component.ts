@@ -10,11 +10,13 @@ import { AuthService } from '../auth.service';
 })
 export class SigninComponent implements OnInit {
 
+  // injecting authservice for getting auth related methods
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
   }
 
+  // sign in method
   onSignin(form: NgForm) {
     const email = form.value.email;
     const password = form.value.password;

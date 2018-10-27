@@ -13,23 +13,27 @@ import { DataService } from "../../shared/data.service";
   styleUrls: ["./bookmark-edit.component.css"]
 })
 export class BookmarkEditComponent implements OnInit {
-  @ViewChild('f') editform: NgForm;
-  editedBookmark: BookmarkModel;
-  editedItemIndex: number;
-  subscription: Subscription;
 
+  // using viewchild to access editform
+  @ViewChild('f') editform: NgForm;
+  editedItemIndex: number;
+
+  // injecting bookmark-serice and data-service
   constructor(private bookmarkService: BookmarkService, private dataService: DataService) {}
 
   ngOnInit() {}
 
+  // method to fetch bookmark values using index number
   onFetchBookmarkValues(fetchedIndex: number) {
     this.editedItemIndex = fetchedIndex;
+    // setting edit form values 
     this.editform.setValue({
       bookmarkDesc: this.bookmarkService.bookmarks[fetchedIndex].bookmark_description,
       bookmarkLink: this.bookmarkService.bookmarks[fetchedIndex].bookmark_url  
     });
   }
 
+  //  method to implement edit bookmark
   onEditBookmark() {
     const bookmarkDescription = this.editform.value.bookmarkDesc;
     const bookmarkLink = this.editform.value.bookmarkLink;
@@ -37,6 +41,7 @@ export class BookmarkEditComponent implements OnInit {
     this.editform.reset();
     this.bookmarkService.updateBookmark(this.editedItemIndex, newBookmark);
 
+    // storing edited bookmark
     this.dataService.storeBookmarks().subscribe(
       (response: Response) => {
         console.log(response);
@@ -44,6 +49,7 @@ export class BookmarkEditComponent implements OnInit {
     );
   }
 
+  // to clear all input fields in form
   onClear(f: NgForm) {
     f.reset();
   }

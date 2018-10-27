@@ -13,8 +13,11 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  // logout method
   onLogout() {
-    this.authService.logout();
+    if(confirm('Do you want to logout ?') === true) {
+      this.authService.logout();
+    }
   }
 
 }

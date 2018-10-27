@@ -9,12 +9,14 @@ import { AuthService } from '../auth.service';
 })
 export class SignupComponent implements OnInit {
 
+  // injecting auth service
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
 
   }
 
+  // implementing on signup method for signup the user
   onSignup(form: NgForm) {
     const email = form.value.email;
     const password = form.value.password;

@@ -1,3 +1,5 @@
+// app-routing module used to navigate to different pages based on paths. For this we will be using angular's routing module.
+
 import { Routes, RouterModule, RouterEvent } from '@angular/router';
 import { NgModule } from '@angular/core';
 
@@ -10,7 +12,7 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { BookmarksComponent } from './bookmarks/bookmarks.component';
 import { AuthGuard } from './auth/auth-guard.service';
 
-
+// appRoutes variable having all paths
 const appRoutes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },

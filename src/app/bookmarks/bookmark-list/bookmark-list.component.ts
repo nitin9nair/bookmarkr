@@ -15,13 +15,17 @@ import { BookmarkEditComponent } from '../bookmark-edit/bookmark-edit.component'
 export class BookmarkListComponent implements OnInit, OnDestroy {
 
   bookmarks: BookmarkModel[] = [];
+  // RxJS subscription to subscribe to change events
   subscription: Subscription;
 
+  // to access bookmark-edit component
   @ViewChild(BookmarkEditComponent) private editBmkr: BookmarkEditComponent;
 
+  // injecting bookmark and data service
   constructor(private bookmarkService: BookmarkService, private dataService: DataService) { }
 
   ngOnInit() {
+    // subscribing to the changes occuring in bookmark's data
     this.subscription = this.bookmarkService.bookmarksChanged
     .subscribe(
       (bookmarks: BookmarkModel[]) => {
@@ -32,10 +36,12 @@ export class BookmarkListComponent implements OnInit, OnDestroy {
     this.dataService.getBookmarks();
   }
 
+  // method when edit button is clicked in template
   onEditBookmark(index: number) {
     this.editBmkr.onFetchBookmarkValues(index);
   }
 
+  // delete bookmark method
   onDeleteBookmark(index: number) {
     if( confirm('Do you want to delete this bookmark ?') === true) {
     this.bookmarkService.deleteBookmark(index);
@@ -45,12 +51,10 @@ export class BookmarkListComponent implements OnInit, OnDestroy {
       }
     );
     }
-    else {
-
-    }
   }
 
   ngOnDestroy() {
+    // unsubscribing the subscription on OnDestroy lifecycle hook
     this.subscription.unsubscribe();
   }
 

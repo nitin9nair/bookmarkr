@@ -1,3 +1,5 @@
+// bookmark model for the type of data object that contains bookmark description and url
+
 export class BookmarkModel {
 
     public bookmark_description: string;
