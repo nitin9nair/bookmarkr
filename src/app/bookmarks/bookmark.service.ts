@@ -10,6 +10,7 @@ export class BookmarkService {
 
   bookmarks: BookmarkModel[] = [];
   searchString: string = '';
+  isSearchActive: boolean = false;
   constructor() {}
 
   // set bookmark method
@@ -43,5 +44,6 @@ export class BookmarkService {
 
   fetchSearchValue(searchValue: string) {
     this.searchString = searchValue;
+    this.isSearchActive = true;
   }
 }
