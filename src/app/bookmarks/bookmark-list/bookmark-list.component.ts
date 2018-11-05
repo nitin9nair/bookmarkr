@@ -17,6 +17,8 @@ export class BookmarkListComponent implements OnInit, OnDestroy {
   // RxJS subscription to subscribe to change events
   subscription: Subscription;
 
+  searchValue: string;
+
   // default start and end value for pagination
   startValue: number = 0;
   endValue: number = 5;
@@ -50,6 +52,7 @@ export class BookmarkListComponent implements OnInit, OnDestroy {
     );
     this.dataService.storeBookmarks();
     this.dataService.getBookmarks();
+    this.currentPage = 1;
   }
 
   // method when edit button is clicked in template
@@ -86,6 +89,11 @@ export class BookmarkListComponent implements OnInit, OnDestroy {
     this.currentPage += 1;
     this.startValue += this.totalItemToShowInPage;
     this.endValue += this.totalItemToShowInPage;
+  }
+
+  isSearchActivated(searchInput: string) {
+    this.searchValue = searchInput;
+    this.currentPage = 1;
   }
 
   ngOnDestroy() {

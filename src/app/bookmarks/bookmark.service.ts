@@ -7,10 +7,8 @@ import { BookmarkModel } from "./bookmark.model";
 export class BookmarkService {
   // RxJS subject used to check changes in bookmark values and notify others of changes
   bookmarksChanged = new Subject<BookmarkModel[]>();
-
+  searchString: string;
   bookmarks: BookmarkModel[] = [];
-  searchString: string = '';
-  isSearchActive: boolean = false;
   constructor() {}
 
   // set bookmark method
@@ -42,8 +40,7 @@ export class BookmarkService {
     this.bookmarksChanged.next(this.bookmarks.slice());
   }
 
-  fetchSearchValue(searchValue: string) {
-    this.searchString = searchValue;
-    this.isSearchActive = true;
+  fetchSearchValue(searchInput: string) {
+    this.searchString = searchInput;
   }
 }

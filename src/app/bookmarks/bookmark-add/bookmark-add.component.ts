@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Response } from '@angular/http';
 
 import { BookmarkModel } from '../bookmark.model';
 import { BookmarkService } from '../bookmark.service';
 import { DataService } from '../../shared/data.service';
+import { BookmarkListComponent } from '../bookmark-list/bookmark-list.component';
 
 @Component({
   selector: 'app-bookmark-add',

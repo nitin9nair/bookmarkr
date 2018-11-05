@@ -6,4 +6,7 @@
     margin-right: 10px;
     padding: 2px 10px;
     border-radius: 3px;
+    background: #222;
+    border: 1px solid #222;
+    color: #fff;
 }
