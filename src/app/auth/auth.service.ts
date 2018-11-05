@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class AuthService {
 
     token: string;
-
+    userEmail: string;
     // to check login state is whether true or false with different parameters
     isDuplicateUser: boolean = false;
     isSignupSuccessful: boolean = false;
@@ -58,6 +58,10 @@ export class AuthService {
                 console.log(error);
             }
         )
+    }
+
+    sendUserEmail(emailValue) {
+        this.userEmail = emailValue;
     }
 
     // method to get token value

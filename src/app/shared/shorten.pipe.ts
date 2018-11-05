@@ -12,7 +12,7 @@ export class ShortenPipe implements PipeTransform {
   // inbuilt transform method
   transform(value: string) {
     // setting limit for number of characters
-    let limit: number = 60;
+    let limit: number = 50;
 
     if (value.length > limit) {
       return value.substr(0, limit) + "...";

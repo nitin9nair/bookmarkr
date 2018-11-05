@@ -40,7 +40,7 @@ import { SearchPipe } from './shared/search.pipe';
     FeaturesComponent,
     AboutComponent,
     ContactComponent,
-    SearchPipe
+    SearchPipe,
   ],
   imports: [
     BrowserModule,

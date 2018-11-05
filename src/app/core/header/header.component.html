@@ -3,8 +3,7 @@
 
     <a class="navbar-brand" routerLink="/home">
         <!-- added logo image -->
-        <img src="../../../assets/images/bookmakr_logo.png" width="30px" height="30px" style="margin-top: -10px;" class="mr-2">
-        bookmarkr
+        <img src="../../../assets/images/bookmakr_logo.png" width="30px" height="30px" style="margin-top: -10px;" class="mr-2"> bookmarkr
     </a>
 
     <!-- Nav Links -->
@@ -13,7 +12,7 @@
             <a class="nav-link" routerLink="/home">Home</a>
         </li>
         <li class="nav-item" routerLinkActive="active" *ngIf="authService.isAuthenticated()">
-            <a class="nav-link" routerLink="/dashboard">Dashboard</a>
+            <a class="nav-link" routerLink="/dashboard">Dashboard <span class="loggedIn_user">( {{ this.authService.userEmail }} )</span></a> 
         </li>
         <li class="nav-item" routerLinkActive="active" *ngIf="!authService.isAuthenticated()">
             <a class="nav-link" routerLink="/features">Features</a>

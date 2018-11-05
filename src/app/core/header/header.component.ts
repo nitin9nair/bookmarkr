@@ -10,7 +10,7 @@ import { BookmarkListComponent } from '../../bookmarks/bookmark-list/bookmark-li
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
+  
   constructor(private authService: AuthService, private bookmarkService: BookmarkService) { }
 
   ngOnInit() {
