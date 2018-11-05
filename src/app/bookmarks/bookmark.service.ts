@@ -9,6 +9,7 @@ export class BookmarkService {
   bookmarksChanged = new Subject<BookmarkModel[]>();
   searchString: string;
   bookmarks: BookmarkModel[] = [];
+  isSearchActive: boolean = false;
   constructor() {}
 
   // set bookmark method
@@ -41,6 +42,10 @@ export class BookmarkService {
   }
 
   fetchSearchValue(searchInput: string) {
+    this.isSearchActive = true;
     this.searchString = searchInput;
+    if(this.searchString == '') {
+      this.isSearchActive = false;
+    }
   }
 }

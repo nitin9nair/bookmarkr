@@ -57,13 +57,11 @@ export class BookmarkListComponent implements OnInit, OnDestroy {
 
   // method when edit button is clicked in template
   onEditBookmark(index: number) {
-    index = index + this.startValue;
     this.editBmkr.onFetchBookmarkValues(index);
   }
 
   // delete bookmark method
   onDeleteBookmark(index: number) {
-    index = index + this.startValue;
     if (confirm("Do you want to delete this bookmark ?") === true) {
       this.bookmarkService.deleteBookmark(index);
       this.dataService.storeBookmarks().subscribe((response: Response) => {
@@ -89,11 +87,6 @@ export class BookmarkListComponent implements OnInit, OnDestroy {
     this.currentPage += 1;
     this.startValue += this.totalItemToShowInPage;
     this.endValue += this.totalItemToShowInPage;
-  }
-
-  isSearchActivated(searchInput: string) {
-    this.searchValue = searchInput;
-    this.currentPage = 1;
   }
 
   ngOnDestroy() {

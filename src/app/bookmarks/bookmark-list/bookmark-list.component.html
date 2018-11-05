@@ -1,6 +1,6 @@
 <div class="container">
   <h6>Bookmarks List
-    <div class="pull-right" *ngIf="totalItems > 5">
+    <div class="pull-right" *ngIf="totalItems > 5 && !this.bookmarkService.isSearchActive">
         <button type="button" class="btn btn-sm btn-outline-secondary prev-btn mr-3" (click)="onPrevPage()" [disabled]="currentPage == 1">
           < Prev</button>
         <span class="pages">Page {{ currentPage }} of {{ totalPages }}</span>

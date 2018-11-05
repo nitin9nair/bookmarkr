@@ -7,8 +7,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class SearchPipe implements PipeTransform {
   transform(items: any[], searchText: string): any[] {
 
-    if(!items) return [];
-    if(!searchText) return items;
+    if(!items) return []; 
+    if(!searchText) return items; 
+    if(searchText == ' ') return []; // if search string is a 'space' return empty
 
     searchText = searchText.toLowerCase();
 
