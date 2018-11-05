@@ -14,6 +14,8 @@
     Create your new bookmark list here.
   </div>
 
+  <span *ngIf="this.bookmarkService.isSearchActive">{{ onSearch() }}</span>
+
   <!-- using ngFor to display all list of bookmarks  -->
   <ul class="list-group" *ngFor="let bookmark of bookmarks | search: this.bookmarkService.searchString | slice: startValue: endValue">
     <li class="list-group-item">

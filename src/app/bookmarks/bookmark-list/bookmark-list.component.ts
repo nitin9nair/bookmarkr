@@ -52,6 +52,7 @@ export class BookmarkListComponent implements OnInit, OnDestroy {
     );
     this.dataService.storeBookmarks();
     this.dataService.getBookmarks();
+    this.onSearch();
     this.currentPage = 1;
   }
 
@@ -73,6 +74,12 @@ export class BookmarkListComponent implements OnInit, OnDestroy {
         this.endValue -= this.totalItemToShowInPage;
       }
     }
+  }
+
+  onSearch() {
+    this.currentPage = 1;
+    this.startValue = 0;
+    this.endValue = 5;
   }
 
   // previous button method

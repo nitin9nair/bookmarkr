@@ -1,6 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
 import { AuthService } from '../../auth/auth.service';
 import { BookmarkService } from '../../bookmarks/bookmark.service';
+import { BookmarkListComponent } from '../../bookmarks/bookmark-list/bookmark-list.component';
 
 @Component({
   selector: 'app-header',

@@ -10,6 +10,7 @@ export class BookmarkService {
   searchString: string;
   bookmarks: BookmarkModel[] = [];
   isSearchActive: boolean = false;
+  
   constructor() {}
 
   // set bookmark method
