@@ -37,9 +37,9 @@ export class BookmarkListComponent implements OnInit, OnDestroy {
 
   // injecting bookmark and data service
   constructor(
-    private bookmarkService: BookmarkService,
-    private dataService: DataService,
-    private authService: AuthService
+    public bookmarkService: BookmarkService,
+    public dataService: DataService,
+    public authService: AuthService
   ) {}
 
   ngOnInit() {

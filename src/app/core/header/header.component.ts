@@ -11,7 +11,7 @@ import { BookmarkListComponent } from '../../bookmarks/bookmark-list/bookmark-li
 })
 export class HeaderComponent implements OnInit {
   
-  constructor(private authService: AuthService, private bookmarkService: BookmarkService) { }
+  constructor(public authService: AuthService, public bookmarkService: BookmarkService) { }
 
   ngOnInit() {
   }
