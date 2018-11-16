@@ -6,6 +6,7 @@ import { Response } from "@angular/http";
 import { BookmarkService } from "../bookmark.service";
 import { BookmarkModel } from "../bookmark.model";
 import { DataService } from "../../shared/data.service";
+import { AuthService } from "../../auth/auth.service";
 
 @Component({
   selector: "app-bookmark-edit",
@@ -19,7 +20,7 @@ export class BookmarkEditComponent implements OnInit {
   editedItemIndex: number;
 
   // injecting bookmark-serice and data-service
-  constructor(private bookmarkService: BookmarkService, private dataService: DataService) {}
+  constructor(private bookmarkService: BookmarkService, private dataService: DataService, private authService: AuthService) {}
 
   ngOnInit() {}
 
@@ -37,14 +38,14 @@ export class BookmarkEditComponent implements OnInit {
   onEditBookmark() {
     const bookmarkDescription = this.editform.value.bookmarkDesc;
     const bookmarkLink = this.editform.value.bookmarkLink;
-    const newBookmark = new BookmarkModel(bookmarkDescription, bookmarkLink);
+    const newBookmark = new BookmarkModel( this.authService.currentUserId, bookmarkDescription, bookmarkLink);
     this.editform.reset();
     this.bookmarkService.updateBookmark(this.editedItemIndex, newBookmark);
 
     // storing edited bookmark
     this.dataService.storeBookmarks().subscribe(
       (response: Response) => {
-        console.log(response);
+       // console.log(response.json());
       }
     );
   }

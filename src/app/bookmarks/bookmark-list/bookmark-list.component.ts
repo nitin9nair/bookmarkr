@@ -6,6 +6,8 @@ import { BookmarkModel } from "../bookmark.model";
 import { BookmarkService } from "../bookmark.service";
 import { DataService } from "../../shared/data.service";
 import { BookmarkEditComponent } from "../bookmark-edit/bookmark-edit.component";
+import { AuthService } from "../../auth/auth.service";
+import { empty } from "rxjs";
 
 @Component({
   selector: "app-bookmark-list",
@@ -36,7 +38,8 @@ export class BookmarkListComponent implements OnInit, OnDestroy {
   // injecting bookmark and data service
   constructor(
     private bookmarkService: BookmarkService,
-    private dataService: DataService
+    private dataService: DataService,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
@@ -44,6 +47,7 @@ export class BookmarkListComponent implements OnInit, OnDestroy {
     this.subscription = this.bookmarkService.bookmarksChanged.subscribe(
       (bookmarks: BookmarkModel[]) => {
         this.bookmarks = bookmarks;
+
         this.totalItems = this.bookmarks.length;
         this.totalPages = Math.ceil(
           this.totalItems / this.totalItemToShowInPage

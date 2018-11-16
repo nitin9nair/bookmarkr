@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Subject } from "rxjs/Subject";
 
 import { BookmarkModel } from "./bookmark.model";
+import { AuthService } from "../auth/auth.service";
 
 @Injectable()
 export class BookmarkService {
@@ -11,7 +12,7 @@ export class BookmarkService {
   bookmarks: BookmarkModel[] = [];
   isSearchActive: boolean = false;
   
-  constructor() {}
+  constructor(private authService: AuthService) {}
 
   // set bookmark method
   setBookmarks(bookmarks: BookmarkModel[]) {
@@ -21,7 +22,7 @@ export class BookmarkService {
 
   // get bookmark method
   getBookmarks() {
-    return this.bookmarks.slice();
+      return this.bookmarks.slice();
   }
 
   // add bookmark
@@ -33,6 +34,7 @@ export class BookmarkService {
   // update bookmark values
   updateBookmark(index: number, newbookmark: BookmarkModel) {
     this.bookmarks[index] = newbookmark;
+    console.log('ES - ' + index);
     this.bookmarksChanged.next(this.bookmarks.slice());
   }
 

@@ -6,6 +6,7 @@ import { BookmarkModel } from '../bookmark.model';
 import { BookmarkService } from '../bookmark.service';
 import { DataService } from '../../shared/data.service';
 import { BookmarkListComponent } from '../bookmark-list/bookmark-list.component';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-bookmark-add',
@@ -15,8 +16,7 @@ import { BookmarkListComponent } from '../bookmark-list/bookmark-list.component'
 export class BookmarkAddComponent implements OnInit {
 
   // injecting bookmark-service and data-service
-  constructor(private bookmarkService: BookmarkService, private dataService: DataService) { }
-
+  constructor(private bookmarkService: BookmarkService, private dataService: DataService, private authService: AuthService) { }
   ngOnInit() {
   }
 
@@ -24,7 +24,7 @@ export class BookmarkAddComponent implements OnInit {
   onAddBookmark(form: NgForm) {
     const bookmarkDescription = form.value.bookmarkDesc;
     const bookmarkLink = form.value.bookmarkLink;
-    const newBookmark = new BookmarkModel(bookmarkDescription, bookmarkLink);
+    const newBookmark = new BookmarkModel(this.authService.currentUserId, bookmarkDescription, bookmarkLink);
     form.reset();
     this.bookmarkService.addBookmark(newBookmark);
 
