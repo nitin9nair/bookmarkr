@@ -57,6 +57,7 @@ export class AuthService {
       .catch(error => {
         // setting sign in failed to true
         this.isSigninFailed = true;
+        // if signin failed navigate user back to signin page
         this.router.navigate(["/signin"]);
         this.error_code = error.code;
         console.log(error.code);

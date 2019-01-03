@@ -32,5 +32,10 @@
         <a type="button" class="close" data-dismiss="alert" aria-label="close">&times;</a>
       You're successfully signed up now. Please  <a routerLink="/signin">Sign In</a> to continue.
     </div>
+
+    <div class="alert alert-danger" *ngIf="authService.error_code == 'auth/network-request-failed' && !authService.isSignupSuccessful">
+      <a type="button" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        Sorry, Please check your network connection!
+  </div>
   </div>
 </div>

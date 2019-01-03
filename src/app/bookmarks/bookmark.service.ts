@@ -33,8 +33,7 @@ export class BookmarkService {
 
   // update bookmark values
   updateBookmark(index: number, newbookmark: BookmarkModel) {
-    this.bookmarks[index] = newbookmark;
-    console.log('ES - ' + index);
+    this.bookmarks[index] = newbookmark;  
     this.bookmarksChanged.next(this.bookmarks.slice());
   }
 

@@ -10,35 +10,37 @@ import { BookmarkService } from "../bookmarks/bookmark.service";
 
 @Injectable()
 export class DataService {
-
-  // firebase DB data url 
+  // firebase DB data url
   DATA_URL = "https://bookmarkr-3c56f.firebaseio.com/bookmarks.json?auth=";
 
-
-  constructor(private http: Http, private authService: AuthService, private bookmarkService: BookmarkService) {}
+  constructor(
+    private http: Http,
+    private authService: AuthService,
+    private bookmarkService: BookmarkService
+  ) {}
 
   // method to store data in firebase realtime DB
   storeBookmarks() {
-    const token = this.authService.getToken();
+    const TOKEN = this.authService.getToken();
     // http put request to store data in DB
-    return this.http.put(this.DATA_URL + token, this.bookmarkService.getBookmarks());
+    return this.http.put(
+      this.DATA_URL + TOKEN,
+      this.bookmarkService.getBookmarks()
+    );
   }
 
   // to fetch all bookmarks
   getBookmarks() {
-    const token = this.authService.getToken();
-
+    const TOKEN = this.authService.getToken();
+    // http get request to fetch all data
     this.http
-      .get(this.DATA_URL + token)
+      .get(this.DATA_URL + TOKEN)
       .map((response: Response) => {
         const data = response.json();
         return data;
       })
-      .subscribe(
-        (bookmarks: BookmarkModel[]) => {
-          this.bookmarkService.setBookmarks(bookmarks);
-        }
-      );
-
-    }
+      .subscribe((bookmarks: BookmarkModel[]) => {
+        this.bookmarkService.setBookmarks(bookmarks);
+      });
+  }
 }
