@@ -1,52 +1,62 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
     <!-- Brand/logo -->
 
+    
     <a class="navbar-brand" routerLink="/home">
         <!-- added logo image -->
         <img src="assets/images/bookmakr_logo.png" width="30px" height="30px" style="margin-top: -10px;" class="mr-2"> bookmarkr
+        &nbsp;<i class="fa fa-bookmark"></i>
     </a>
 
-    <!-- Nav Links -->
-    <ul class="navbar-nav mr-auto">
-        <li class="nav-item" routerLinkActive="active" *ngIf="!authService.isAuthenticated()">
-            <a class="nav-link" routerLink="/home">Home</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active" *ngIf="authService.isAuthenticated()">
-            <a class="nav-link" routerLink="/dashboard">Dashboard <span class="loggedIn_user">( {{ this.authService.getUserEmailId() }} )</span></a> 
-        </li>
-        <li class="nav-item" routerLinkActive="active" *ngIf="!authService.isAuthenticated()">
-            <a class="nav-link" routerLink="/features">Features</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active" *ngIf="!authService.isAuthenticated()">
-            <a class="nav-link" routerLink="/about">About</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active" *ngIf="!authService.isAuthenticated()">
-            <a class="nav-link" routerLink="/contact">Contact</a>
-        </li>
-    </ul>
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <i class="fa fa-bars"></i>                      
+      </button>
 
-    <ul class="navbar-nav ml-auto">
 
-        <li class="nav-item" *ngIf="authService.isAuthenticated()">
-            <input type="text" class="searchInput" (keyup)="sendSearchValue(searchInput.value)" #searchInput placeholder="Enter search keyword...">
-        </li>
-
-        <li class="nav-item" routerLinkActive="active" *ngIf="authService.isAuthenticated()">
-            <a class="nav-link" routerLink="/settings">Settings</a>
-        </li>
-
-        <li class="nav-item" routerLinkActive="active" *ngIf="authService.isAuthenticated()">
-            <a class="nav-link" (click)="onLogout()">Logout </a>
-        </li>
-
-        <ng-template [ngIf]="!authService.isAuthenticated()">
-            <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" routerLink="/signup">Sign Up</a>
+    <div class="collapse navbar-collapse" id="myNavbar">
+        <!-- Nav Links -->
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" routerLinkActive="active" *ngIf="!authService.isAuthenticated()">
+                <a class="nav-link" routerLink="/home">Home</a>
             </li>
-            <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" routerLink="/signin">Sign In</a>
+            <li class="nav-item" routerLinkActive="active" *ngIf="authService.isAuthenticated()">
+                <a class="nav-link" routerLink="/dashboard">Dashboard <span class="loggedIn_user">( {{ this.authService.getUserEmailId() }} )</span></a> 
             </li>
-        </ng-template>
+            <li class="nav-item" routerLinkActive="active" *ngIf="!authService.isAuthenticated()">
+                <a class="nav-link" routerLink="/features">Features</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active" *ngIf="!authService.isAuthenticated()">
+                <a class="nav-link" routerLink="/about">About</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active" *ngIf="!authService.isAuthenticated()">
+                <a class="nav-link" routerLink="/contact">Contact</a>
+            </li>
+        </ul>
+    
+        <ul class="navbar-nav ml-auto">
 
-    </ul>
+            <li class="nav-item" *ngIf="authService.isAuthenticated()">
+                <input type="text" class="searchInput" (keyup)="sendSearchValue(searchInput.value)" #searchInput placeholder="Enter search keyword...">
+            </li>
+
+            <li class="nav-item" routerLinkActive="active" *ngIf="authService.isAuthenticated()">
+                <a class="nav-link" routerLink="/settings">Settings</a>
+            </li>
+
+            <li class="nav-item" routerLinkActive="active" *ngIf="authService.isAuthenticated()">
+                <a class="nav-link" (click)="onLogout()">Logout </a>
+            </li>
+
+            <ng-template [ngIf]="!authService.isAuthenticated()">
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" routerLink="/signup">Sign Up</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" routerLink="/signin">Sign In</a>
+                </li>
+            </ng-template>
+
+        </ul>
+    
+    </div>
 </nav>

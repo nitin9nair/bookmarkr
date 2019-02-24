@@ -1,13 +1,21 @@
-<div class="container">
-  <h6>Bookmarks List
-    <div class="pull-right" *ngIf="totalItems > 5 && !this.bookmarkService.isSearchActive">
-      <span class="mr-2">Total: {{ totalItems }}</span>
-        <button type="button" class="btn btn-sm btn-outline-secondary prev-btn mr-3" (click)="onPrevPage()" [disabled]="currentPage == 1">
-          < Prev</button>
-        <span class="pages">Page {{ currentPage }} of {{ totalPages }}</span>
-        <button type="button" class="btn btn-sm btn-outline-secondary next-btn ml-3" (click)="onNextPage()" [disabled]="currentPage == totalPages">Next ></button>
+<div class="container no-padding">
+
+  <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
+    <div class="col-md-12 col-sm-12 col-xs-12 bkmkr-header no-padding" *ngIf="totalItems < 5 && this.bookmarkService.isSearchActive">
+        Bookmarks List
     </div>
-  </h6>
+    <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
+        <div *ngIf="totalItems > 5 && !this.bookmarkService.isSearchActive">
+            <span class="mr-2"><i class="fa fa-list"></i> Bookmarks List &nbsp;&nbsp; <i class="fa fa-flag"></i> Total: {{ totalItems }}</span>
+
+            <hr class="mobile-only">
+              <button type="button" class="btn btn-sm btn-outline-secondary prev-btn mr-3" (click)="onPrevPage()" [disabled]="currentPage == 1">
+                < Prev</button>
+              <span class="pages"><i class="fa fa-file"></i> Page {{ currentPage }} of {{ totalPages }}</span>
+              <button type="button" class="btn btn-sm btn-outline-secondary next-btn ml-3" (click)="onNextPage()" [disabled]="currentPage == totalPages">Next ></button>
+          </div>
+    </div>
+  </div>
   <hr>
 
   <div class="alert alert-info" *ngIf="bookmarks.length == 0">
@@ -18,12 +26,12 @@
 
   <!-- using ngFor to display all list of bookmarks  -->
   <ul class="list-group" *ngFor="let bookmark of bookmarks | search: this.bookmarkService.searchString | slice: startValue: endValue; let i = index;">
-    <li class="list-group-item">
-      <div class="float-left">
+    <li class="list-group-item col-md-12 col-sm-12 col-xs-12">
+      <div class="float-left col-md-8 col-sm-8 col-xs-12 bkmkr">
         <div class="bookmark-desc">{{ bookmark.bookmark_description | shorten }}</div>
         <div class="bookmark-link">{{ bookmark.bookmark_url | shorten }}</div>
       </div>
-      <div class="float-right action-btn">
+      <div class="float-right action-btn col-md-4 col-sm-4 col-xs-12">
         <a [href]="bookmark.bookmark_url" target="_blank" role="button" class="btn btn-success mr-2">
           <i class="fa fa-link"></i>
         </a>

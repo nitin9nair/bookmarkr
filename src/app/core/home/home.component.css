@@ -2,3 +2,16 @@
     font-size: 20px;
     margin-bottom: 20px;
 }
+
+.home-image {
+    width: 600px;
+    height: 400px;
+    display: inline-block;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .home-image {
+        width: 100%;
+        height: auto;
+    }
+}

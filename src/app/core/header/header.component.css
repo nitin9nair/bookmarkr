@@ -13,3 +13,22 @@
 .loggedIn_user {
     color: #fff;
 }
+
+.navbar-toggle {
+    display: none;
+    background: none;
+    color: #fff;
+    border: none;
+    font-size: 20px;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .searchInput {
+        width: 100%;
+        margin: 0;
+        padding: 10px;
+    }
+    .navbar-toggle {
+        display: inline-block;
+    }
+}

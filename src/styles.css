@@ -16,3 +16,6 @@ form .error-message {
     font-size: 14px;
     margin-top: 5px;
 }
+.no-padding {
+    padding: 0 !important;
+}

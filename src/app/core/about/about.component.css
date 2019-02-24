@@ -2,3 +2,20 @@
     margin-bottom: 20px;
     vertical-align: middle
 }
+
+.about-image {
+    width: 100px;
+    height: 100px;
+}
+
+.about-row {
+    margin-bottom: 40px;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .about-image {
+        width: 100px;
+        height: 100px;
+        margin: 30px;
+    }
+}
