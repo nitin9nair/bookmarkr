@@ -12,7 +12,7 @@
             <a class="nav-link" routerLink="/home">Home</a>
         </li>
         <li class="nav-item" routerLinkActive="active" *ngIf="authService.isAuthenticated()">
-            <a class="nav-link" routerLink="/dashboard">Dashboard <span class="loggedIn_user">( {{ this.authService.userEmail }} )</span></a> 
+            <a class="nav-link" routerLink="/dashboard">Dashboard <span class="loggedIn_user">( {{ this.authService.getUserEmailId() }} )</span></a> 
         </li>
         <li class="nav-item" routerLinkActive="active" *ngIf="!authService.isAuthenticated()">
             <a class="nav-link" routerLink="/features">Features</a>
