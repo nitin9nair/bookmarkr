@@ -20,7 +20,7 @@
                 <a class="nav-link" routerLink="/home">Home</a>
             </li>
             <li class="nav-item" routerLinkActive="active" *ngIf="authService.isAuthenticated()">
-                <a class="nav-link" routerLink="/dashboard">Dashboard <span class="loggedIn_user">( {{ this.authService.getUserEmailId() }} )</span></a> 
+                <a class="nav-link" routerLink="/dashboard"><i class="fa fa-tachometer"></i>&nbsp;Dashboard <span class="loggedIn_user">( {{ this.authService.getUserEmailId() }} )</span></a> 
             </li>
             <li class="nav-item" routerLinkActive="active" *ngIf="!authService.isAuthenticated()">
                 <a class="nav-link" routerLink="/features">Features</a>
@@ -40,11 +40,11 @@
             </li>
 
             <li class="nav-item" routerLinkActive="active" *ngIf="authService.isAuthenticated()">
-                <a class="nav-link" routerLink="/settings">Settings</a>
+                <a class="nav-link" routerLink="/settings"><i class="fa fa-cog"></i>&nbsp;Settings</a>
             </li>
 
             <li class="nav-item" routerLinkActive="active" *ngIf="authService.isAuthenticated()">
-                <a class="nav-link" (click)="onLogout()">Logout </a>
+                <a class="nav-link" (click)="onLogout()"><i class="fa fa-sign-out"></i>&nbsp;Logout </a>
             </li>
 
             <ng-template [ngIf]="!authService.isAuthenticated()">

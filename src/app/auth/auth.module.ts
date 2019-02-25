@@ -5,11 +5,13 @@ import { SignupComponent } from "./signup/signup.component";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { AuthRoutingModule } from "./auth-routing.module";
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
     declarations: [
         SignupComponent,
-        SigninComponent
+        SigninComponent,
+        SettingsComponent
     ],
     imports: [
         CommonModule,

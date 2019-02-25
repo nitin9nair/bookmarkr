@@ -8,6 +8,8 @@ export class AuthService {
   token: string;
   userEmail: string;
   currentUserId: any;
+  currentPassword: string;
+  passwordUpdated: boolean;
 
   // to check login state is whether true or false with different parameters
   isDuplicateUser: boolean = false;
@@ -31,7 +33,6 @@ export class AuthService {
         // if user is duplicate then navigate back to 'signup' page
         this.isDuplicateUser = true;
         this.router.navigate(["/signup"]);
-        console.log(error);
       });
     this.isSignupSuccessful = true;
     this.isDuplicateUser = false;
@@ -57,6 +58,7 @@ export class AuthService {
             sessionStorage.setItem('idToken', this.token);
           });
           this.currentUserId = firebase.auth().currentUser.uid;
+          this.currentPassword = password;
           sessionStorage.setItem('userEmail', email);
       })
       .catch(error => {
@@ -87,17 +89,28 @@ export class AuthService {
 
   logout() {
     // if logout then redirect to home
-    this.router.navigate(["/home"]);
     this.isLoggedIn = false;
     sessionStorage.setItem('isLoggedIn', this.isLoggedIn.toString());
     sessionStorage.setItem('idToken', null);
     sessionStorage.setItem('userEmail', null);
     firebase.auth().signOut();
     this.token = null;
+    this.router.navigate(["/signin"]);
   }
 
   // to check whether user is authenticated or not
   isAuthenticated() {
     return JSON.parse(sessionStorage.getItem('isLoggedIn') || this.isLoggedIn.toString());
+  }
+
+  changeUserPassword(oldPassword: string, newPassword: string) {
+
+    if(this.currentPassword === oldPassword) {
+      firebase.auth().currentUser.updatePassword(newPassword);
+      this.passwordUpdated = true;
+      this.logout();
+    } else {
+      this.passwordUpdated = false;
+    }
   }
 }

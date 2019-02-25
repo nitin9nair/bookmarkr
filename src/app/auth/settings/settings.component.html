@@ -1,0 +1,114 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12">
+    <!-- form for signin users using template driven approach -->
+    <form (ngSubmit)="f.valid && onChangePassword(f)" #f="ngForm">
+      <div class="form-group col-sm-6 col-md-6 no-padding">
+        <h4>Change Password</h4>
+        <hr />
+        <label>Old Password</label>
+        <input
+          class="form-control"
+          type="password"
+          id="old-password"
+          name="oldpassword"
+          required
+          #oldpassword="ngModel"
+          ngModel
+          pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
+        />
+        <p
+          class="error-message"
+          *ngIf="oldpassword.touched && oldpassword.invalid"
+        >
+          Please type correct old password
+        </p>
+      </div>
+      <div class="form-group col-sm-6 col-md-6 no-padding">
+        <label>New Password</label>
+        <input
+          class="form-control"
+          type="password"
+          id="new-password"
+          name="newpassword"
+          minlength="6"
+          required
+          #newpassword="ngModel"
+          ngModel
+          pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
+        />
+        <p
+          class="error-message"
+          *ngIf="newpassword.touched && newpassword.invalid"
+        >
+          Password must be 6 characters long with atleast one number
+        </p>
+      </div>
+      <div class="form-group col-sm-6 col-md-6 no-padding">
+        <label>Confirm New Password</label>
+        <input
+          class="form-control"
+          type="password"
+          id="cnf-password"
+          name="cnfpassword"
+          minlength="6"
+          required
+          #cnfpassword="ngModel"
+          ngModel
+          pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
+        />
+        <p
+          class="error-message"
+          *ngIf="cnfpassword.touched && cnfpassword.invalid"
+        >
+          Password must be 6 characters long with atleast one number
+        </p>
+      </div>
+      <div class="form-group">
+        <button
+          class="btn btn-primary mr-2"
+          type="submit"
+          [disabled]="!f.valid"
+        >
+          Change Password
+        </button>
+        <button class="btn btn-secondary" type="button" (click)="onClear(f)">
+          Clear
+        </button>
+      </div>
+    </form>
+
+    <!-- showing message if email or password is invalid -->
+    <div
+      class="alert alert-danger col-md-6 col-sm-6 col-xs-12"
+      *ngIf="authService.passwordUpdated == false"
+    >
+      <a type="button" class="close" data-dismiss="alert" aria-label="close"
+        >&times;</a
+      >
+      Sorry, invalid old password. Please try again!
+    </div>
+
+    <!-- showing message if email or password is invalid -->
+    <div
+      class="alert alert-danger col-md-6 col-sm-6 col-xs-12"
+      *ngIf="newcnfSame"
+    >
+      <a type="button" class="close" data-dismiss="alert" aria-label="close"
+        >&times;</a
+      >
+      Sorry, new password and confirm password unmatched. Please try again!
+    </div>
+
+    <!-- showing error message if user's is facing network issue -->
+    <div
+      class="alert alert-danger col-md-6 col-sm-6 col-xs-12"
+      *ngIf="oldnewSame == true"
+    >
+      <a type="button" class="close" data-dismiss="alert" aria-label="close"
+        >&times;</a
+      >
+      Sorry, Please old and new password are same
+    </div>
+
+  </div>
+</div>

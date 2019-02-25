@@ -21,11 +21,18 @@ button:disabled {
     display: none;
 }
 
+.action-btn {
+    text-align: right;
+}
+
 @media (min-width: 320px) and (max-width: 767px) {
     .bkmkr {
         margin-bottom: 20px;
     }
     .mobile-only {
         display: block;
+    }
+    .action-btn {
+        text-align: left;
     }
 }

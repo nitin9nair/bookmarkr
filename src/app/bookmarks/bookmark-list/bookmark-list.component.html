@@ -32,13 +32,13 @@
         <div class="bookmark-link">{{ bookmark.bookmark_url | shorten }}</div>
       </div>
       <div class="float-right action-btn col-md-4 col-sm-4 col-xs-12">
-        <a [href]="bookmark.bookmark_url" target="_blank" role="button" class="btn btn-success mr-2">
+        <a [href]="bookmark.bookmark_url" target="_blank" role="button" class="btn btn-success mr-2" title="Visit link">
           <i class="fa fa-link"></i>
         </a>
-        <button type="button" class="btn btn-primary mr-2" (click)="onEditBookmark(this.bookmarks.indexOf(this.bookmark))" data-toggle="modal" data-target="#editBookmark">
+        <button type="button" class="btn btn-primary mr-2" title="Edit" (click)="onEditBookmark(this.bookmarks.indexOf(this.bookmark))" data-toggle="modal" data-target="#editBookmark">
           <i class="fa fa-edit"></i>
         </button>
-        <button type="button" class="btn btn-danger" (click)="onDeleteBookmark(this.bookmarks.indexOf(this.bookmark))">
+        <button type="button" class="btn btn-danger" title="Delete" (click)="onDeleteBookmark(this.bookmarks.indexOf(this.bookmark))">
           <i class="fa fa-trash"></i>
         </button>
       </div>

@@ -101,7 +101,7 @@ export class BookmarkListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    // unsubscribing the subscription on OnDestroy lifecycle hook
+    // unsubscribing the subscription on OnDestroy lifecycle hook after its use
     this.subscription.unsubscribe();
   }
 }

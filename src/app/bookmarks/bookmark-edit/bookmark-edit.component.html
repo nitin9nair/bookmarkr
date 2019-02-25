@@ -17,13 +17,13 @@
             <div class="form-group">
               <label>Edit Bookmark Description</label>
               <input class="form-control" type="text" minlength="3" id="bookmarkDesc" name="bookmarkDesc" ngModel #bookmarkDesc="ngModel" required>
-              <p class="error-message" *ngIf="">Please type atleast 3 characters.</p>
+              <p class="error-message" *ngIf="bookmarkDesc.touched && bookmarkDesc.invalid">Please type atleast 3 characters.</p>
             </div>
 
             <div class="form-group">
               <label>Edit Bookmark Link</label>
-              <input class="form-control" type="text" minlength="5" id="bookmarkLink" name="bookmarkLink" ngModel #bookmarkLink="ngModel" required>
-              <p class="error-message" *ngIf="">Please type valid link.</p>
+              <input class="form-control" type="text" minlength="10" id="bookmarkLink" name="bookmarkLink" ngModel #bookmarkLink="ngModel" required>
+              <p class="error-message" *ngIf="bookmarkLink.touched && bookmarkLink.invalid">Please type valid link.</p>
             </div>
           </div>
 
