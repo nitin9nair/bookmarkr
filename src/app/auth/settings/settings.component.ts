@@ -12,7 +12,7 @@ export class SettingsComponent implements OnInit {
   oldnewSame:boolean = false;
   newcnfSame:boolean = false;
 
-  constructor(private authService: AuthService) { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
   }
