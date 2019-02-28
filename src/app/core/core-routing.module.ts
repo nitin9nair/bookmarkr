@@ -7,6 +7,7 @@ import { AboutComponent } from "./about/about.component";
 import { ContactComponent } from "./contact/contact.component";
 
 const coreRoutes: Routes = [
+    { path: '', component: HomeComponent },
     { path: 'home', component: HomeComponent },
     { path: 'features', component: FeaturesComponent },
     { path: 'about', component: AboutComponent },

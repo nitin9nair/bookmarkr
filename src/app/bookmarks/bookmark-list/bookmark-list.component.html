@@ -1,8 +1,9 @@
 <div class="container no-padding">
 
   <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
-    <div class="col-md-12 col-sm-12 col-xs-12 bkmkr-header no-padding" *ngIf="totalItems < 5 && this.bookmarkService.isSearchActive">
-        Bookmarks List
+    <div class="col-md-12 col-sm-12 col-xs-12 bkmkr-header no-padding" *ngIf="totalItems <= 5 && !this.bookmarkService.isSearchActive">
+      <i class="fa fa-list"></i>&nbsp;Bookmarks List&nbsp;&nbsp; <i class="fa fa-flag"></i>&nbsp;Total: {{ totalItems }}
+      
     </div>
     <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
         <div *ngIf="totalItems > 5 && !this.bookmarkService.isSearchActive">

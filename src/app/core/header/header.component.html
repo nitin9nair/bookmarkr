@@ -4,11 +4,13 @@
     
     <a class="navbar-brand" routerLink="/home">
         <!-- added logo image -->
-        <img src="assets/images/bookmakr_logo.png" width="30px" height="30px" style="margin-top: -10px;" class="mr-2"> bookmarkr
+        <img src="assets/images/bookmakr_logo.png" width="30px" height="30px" style="margin-top: -10px;" class="mr-2"> 
+        <span class="logoDisplay">bookmarkr
         &nbsp;<i class="fa fa-bookmark"></i>
+        </span>
     </a>
 
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar" *ngIf="!authService.isAuthenticated()"> 
         <i class="fa fa-bars"></i>                      
       </button>
 
