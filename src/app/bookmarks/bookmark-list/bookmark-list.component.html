@@ -23,6 +23,13 @@
     Create your new bookmark list here.
   </div>
 
+  <div *ngIf="bookmarks.length == 0">
+      <div class="load-container">
+          <div class="outer-ring">
+          </div>
+      </div>
+    </div>
+
   <span *ngIf="this.bookmarkService.isSearchActive">{{ onSearch() }}</span>
 
   <!-- using ngFor to display all list of bookmarks  -->
