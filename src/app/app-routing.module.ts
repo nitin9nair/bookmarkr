@@ -4,7 +4,6 @@ import { Routes, RouterModule, RouterEvent } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { AuthGuard } from './auth/auth-guard.service';
-import { HomeComponent } from './core/home/home.component';
 
 // appRoutes variable having all paths
 const appRoutes: Routes = [

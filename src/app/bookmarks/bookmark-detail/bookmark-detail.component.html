@@ -1,0 +1,18 @@
+<div class="bookmarkdetail-container">
+  <h4>Bookmark Detail</h4>
+  <hr />
+
+  <div class="card">
+    <div class="card-header"><strong>Bookmark Description -</strong> {{ bookmarkDescDetail }}</div>
+    <div class="card-body"><strong>Bookmark Link/URL</strong><br>
+      <a [href]="bookmarkLinkDetail" target="_blank">{{
+          bookmarkLinkDetail
+        }}</a>
+    </div>
+  </div>
+
+  <br>
+  <button type="button" class="btn btn-secondary" routerLink="/dashboard">
+    Back to dashboard
+  </button>
+</div>

@@ -8,6 +8,7 @@ import { BookmarkAddComponent } from "./bookmark-add/bookmark-add.component";
 import { BookmarkEditComponent } from "./bookmark-edit/bookmark-edit.component";
 import { BookmarksRoutingModule } from "./bookmarks-routing.module";
 import { SharedModule } from "../shared/shared.module";
+import { BookmarkDetailComponent } from './bookmark-detail/bookmark-detail.component';
 ;
 
 @NgModule({
@@ -15,7 +16,8 @@ import { SharedModule } from "../shared/shared.module";
     BookmarksComponent,
     BookmarkListComponent,
     BookmarkAddComponent,
-    BookmarkEditComponent
+    BookmarkEditComponent,
+    BookmarkDetailComponent
   ],
   imports: [
       CommonModule,

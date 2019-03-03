@@ -27,9 +27,12 @@
 
   <!-- using ngFor to display all list of bookmarks  -->
   <ul class="list-group" *ngFor="let bookmark of bookmarks | search: this.bookmarkService.searchString | slice: startValue: endValue; let i = index;">
+    
     <li class="list-group-item col-md-12 col-sm-12 col-xs-12">
       <div class="float-left col-md-8 col-sm-8 col-xs-12 bkmkr">
-        <div class="bookmark-desc">{{ bookmark.bookmark_description | shorten }}</div>
+          <a [routerLink]="['/bookmark', this.bookmarks.indexOf(this.bookmark) ]">
+            <div class="bookmark-desc">{{ bookmark.bookmark_description | shorten }}</div>
+          </a>
         <div class="bookmark-link">{{ bookmark.bookmark_url | shorten }}</div>
       </div>
       <div class="float-right action-btn col-md-4 col-sm-4 col-xs-12">

@@ -8,6 +8,7 @@ import { FeaturesComponent } from "./features/features.component";
 import { AboutComponent } from "./about/about.component";
 import { ContactComponent } from "./contact/contact.component";
 import { CoreRoutingModule } from "./core-routing.module";
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { CoreRoutingModule } from "./core-routing.module";
     FooterComponent,
     FeaturesComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    PageNotFoundComponent
   ],
   imports: [CommonModule, CoreRoutingModule]
 })
