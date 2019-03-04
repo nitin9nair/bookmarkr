@@ -24,7 +24,6 @@
         <label>Password</label>
         <input
           class="form-control"
-          type="password"
           id="password"
           name="password"
           minlength="6"
@@ -32,6 +31,7 @@
           #password="ngModel"
           ngModel
           pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
+          togglePassword
         />
         <p class="error-message" *ngIf="password.touched && password.invalid">
           Password must be 6 characters long with atleast one number
@@ -96,6 +96,12 @@
         >&times;</a
       >
       Changed password successfully! Please login again to continue
+    </div>
+
+    <div class="test-data">
+      <strong>Test Data: </strong><br><br>
+      <strong>Test Email Id - </strong>test@test.com<br>
+      <strong>Test Password - </strong>test123
     </div>
   </div>
 </div>
