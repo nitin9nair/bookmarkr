@@ -57,7 +57,7 @@ button:disabled {
     z-index: 1000;
     width: 60px;
     height:  60px;
-    animation: spiner 1s infinite linear;
+    animation: spiner 1s infinite ease;
 }
 @keyframes spiner {
     0% {

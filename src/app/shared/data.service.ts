@@ -12,16 +12,13 @@ import { BookmarkService } from "../bookmarks/bookmark.service";
 @Injectable()
 export class DataService {
   // firebase DB data url
-  API_URL = "https://bookmarkr-3c56f.firebaseio.com/bookmarks.json?auth=";
+  DATA_URL = "https://bookmarkr-3c56f.firebaseio.com/bookmarks.json?auth=";
 
   constructor(
     private http: Http,
     private authService: AuthService,
-    private bookmarkService: BookmarkService,
-    private sanitizer: DomSanitizer
+    private bookmarkService: BookmarkService
   ) {}
-
-  DATA_URL = this.sanitizer.bypassSecurityTrustUrl(this.API_URL);
 
   // method to store data in firebase realtime DB
   storeBookmarks() {
