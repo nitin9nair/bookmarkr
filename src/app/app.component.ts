@@ -14,8 +14,8 @@ export class AppComponent implements OnInit {
 
     // initializing firebase db configuration with API key and domain name
     firebase.initializeApp({
-      apiKey: "AIzaSyBkjVphQERLb991Sd_CXtf3cKY2BH5fsAA",
-      authDomain: "bookmarkr-3c56f.firebaseapp.com",
+      apiKey: "AIzaSyApRqd-4pt7piX3N1KabacmrldQY0lWvHo",
+      authDomain: "bookmarkr-33970.firebaseapp.com",
     });
   }
 }
